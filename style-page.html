@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<script>
+	var canvas; 
+    var context;
+	
+		WebFontConfig = 
+		{
+        google: { families: [ 'Tangerine','JollyLodger','Dynalight','Ribeye Marrow','Oleo Script','Eater', 'Codystar', 'Miltonian', 'League Script','Aguafina Script'] }
+      };
+	  
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+	  
+      window.onload = function()
+	  {
+        canvas = document.getElementById("myCanvas");
+		context = canvas.getContext("2d");
+
+        context.font = "40pt Arial";
+        context.fillStyle = "blue";
+        context.fillText("Hello World!", 150, 100);
+      };
+	  
+	function changeFont(fontObj)
+	{
+		 var idx = fontObj.selectedIndex; 
+		 // get the value of the selected option 
+		 var which = fontObj.options[idx].value;
+	 
+		context.clearRect(0,0,800,800);
+		context.fillStyle = "rgba(0,0,0,0)";
+		context.fillRect(0,0,800,800);
+		context.font = "40pt "+which;
+        context.fillStyle = "blue";
+        context.fillText("Hello World!", 150, 100);
+	}
+
+    </script>
+	    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #myCanvas {
+        border: 1px solid #9C9898;
+      }
+
+	  .wf-loading p {
+        font-family: serif
+      }
+      .wf-inactive p {
+        font-family: serif
+      }
+      .wf-active p {
+        font-family: 'Tangerine','JollyLodger','Dynalight','Ribeye Marrow','Oleo Script','Eater', 'Codystar', 'Miltonian', 'League Script','Aguafina Script', serif
+      }
+    </style>
+  </head>
+
+	  <body>
+    <canvas id="myCanvas" width="578" height="200">
+	</canvas>
+	<select onchange="changeFont(this)" >
+	  <option>Arial</option>
+	  <option>Tangerine</option>
+	  <option>JollyLodger</option>
+	  <option>Dynalight</option>
+	  <option>Ribeye Marrow</option>
+	  <option>Oleo Script</option>
+	  <option>Eater</option>
+	  <option>Codystar</option>
+	  <option>Miltonian</option>
+	  <option>League Script</option>
+	  <option>Aguafina Script</option>
+	</select>
+	<p>This is using Tangerine!</p>
+  </body>
+  </body>
+</html>
